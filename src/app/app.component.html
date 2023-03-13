@@ -1,7 +1,22 @@
-<header class="header">
-  <h1>{{title}}</h1>
-</header>
-<router-outlet></router-outlet>
-<footer class="footer">
-  v-1.0.0 (Dream team acelys &copy; 2023)
-</footer>
+<div class="container">
+  <header class="row header">
+    <div class="col xs12">
+      <h1>{{ title }}</h1>
+    </div>
+
+  </header>
+
+  <div class="row">
+    <div class="col xs12">
+      <router-outlet></router-outlet>
+    </div>
+
+  </div>
+
+
+  <footer class="row footer">
+    <div class="col xs12">
+      v. 1.0.0 (Dream Team Acelys &copy; 2023)
+    </div>
+  </footer>
+</div>

@@ -1,1 +1,19 @@
 <p>dashboard works!</p>
+<div class="row" >
+    <ng-container *ngFor="let tile of tiles">
+        <div class="col xs12 tile" *ngIf="isAdmin || tile.title!=='Parameters'">
+            {{tile.title}}
+
+            <div class="tile-title">
+                {{tile.title}}
+            </div>
+            <blockquote>
+                {{tile.summary}}
+            </blockquote>
+            <div class="tile-actions">
+                <button type="button" (click)="onClick(tile)">Go!</button>
+
+            </div>
+        </div>
+    </ng-container>
+</div>
