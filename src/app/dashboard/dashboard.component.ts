@@ -13,7 +13,8 @@ export class DashboardComponent implements OnInit {
   /**
    * Specify if a "user" is admin or nt (default true)
    */
-  public isAdmin:boolean=false
+  public isAdmin:boolean=true
+  //public roles:Array<String>=['Admin', 'User']
 
   constructor() { }
 
@@ -35,7 +36,8 @@ export class DashboardComponent implements OnInit {
     })
   }
   public onClick(object:any): void{
-    console.log(`A button was clicked :${object.title}`)
+   //console.log(`A button was clicked :${object.title}`)
+   this.tiles.splice(this.tiles.indexOf(object), 1)
   }
 
 }

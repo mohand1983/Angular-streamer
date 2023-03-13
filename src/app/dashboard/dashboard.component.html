@@ -1,4 +1,14 @@
 <p>dashboard works!</p>
+<div class="row">
+    <span (click)="isAdmin=!isAdmin">
+        {{isAdmin ? 'Admin':'User'}}
+
+    </span>
+    <!--<span *ngFor="let role of roles">
+        <p *ngIf="roles || role=='Admin'">{{role}}</p>
+    </span>-->
+
+</div>
 <div class="row" >
     <ng-container *ngFor="let tile of tiles">
         <div class="col xs12 tile" *ngIf="isAdmin || tile.title!=='Parameters'">
