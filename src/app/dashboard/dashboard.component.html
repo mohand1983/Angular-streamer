@@ -10,6 +10,12 @@
 </div>
 <div class="row" >
     <ng-container *ngFor="let tile of tiles">
-        <app-tile *ngIf="isAdmin || tile.title!=='Parameters'"></app-tile>
+        <app-tile 
+        *ngIf="isAdmin || tile.title!=='Parameters'"
+        class="col xs12 md4"
+        [tileInfo]="tile"
+        >
+        
+    </app-tile>
     </ng-container>
 </div>

@@ -13,7 +13,7 @@ export class DashboardComponent implements OnInit {
   /**
    * Specify if a "user" is admin or nt (default true)
    */
-  public isAdmin:boolean=false
+  public isAdmin:boolean=true
   //public roles:Array<String>=['Admin', 'User']
 
   constructor() { }
