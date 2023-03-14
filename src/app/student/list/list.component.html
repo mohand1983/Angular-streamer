@@ -1,1 +1,26 @@
-<p>list works!</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th><input type="checkbox"></th>
+            <th>ID</th>
+            <th>Last Name</th>
+            <th>First name</th>
+            <th>email</th>
+            <th>phoneNumber</th>
+            <th>login</th>
+            <th>password</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let s of students">
+            <td><input type="checkbox"></td>
+            <td>{{s.id}}</td>
+            <td>{{s.lastName}}</td>
+            <td>{{s.firstName}}</td>
+            <td>{{s.email}}</td>
+            <td>{{s.phoneNumber}}</td>
+            <td>{{s.login}}</td>
+            <td>{{s.password}}</td>
+        </tr>
+    </tbody>
+</table>

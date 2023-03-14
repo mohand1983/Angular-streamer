@@ -9,18 +9,37 @@ import { StudentService } from '../services/student.service';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
+  public students: Array<any>=[]
+  errorMessage!: string;
 
   constructor(
     private _studentService: StudentService
   ) { }
 
   ngOnInit(): void {
-    this._studentService.findAll()
-    .pipe(
-      take(1)
-    ).subscribe((students:IStudent[])=>{
-      console.log(`Got ${students.length} students`)
-    })
+    this.getAllStudents()
   }
+  getAllStudents() {
+    /*this._studentService.findAll()
+      .pipe(
+        take(1)
+      ).subscribe((students: IStudent[]) => {
+        //console.log(`Got ${students.length} students`)
+        //return `${students}`;
+        this.students=students;
+      })*/
+      this._studentService.findSimpleStudentsDto().subscribe({
+        next: (data) => {
+          //console.log(`Got ${data.length} students`)
+          this.students = data;
+          
+        },
+        error: (err) => {
+          this.errorMessage = err;
+        }
+      });
+      
+  }
+
 
 }

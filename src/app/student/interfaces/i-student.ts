@@ -4,6 +4,6 @@ export interface IStudent {
     firstName?:string
     email:string
     phoneNumber?:string
-    login:string
-    password:string
+    login?:string
+    password?:string
 }
