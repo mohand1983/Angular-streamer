@@ -27,7 +27,7 @@ export class DashboardComponent implements OnInit {
     {
       title:'Students',
       summary:'Add, Remove, View',
-      action:['dashboard']
+      action:['/','student', 'list']
     },
     {
       title:'Courses',

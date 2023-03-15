@@ -45,7 +45,7 @@ export class StudentService {
       endPoint
     )
   }
-
+  
   public findOne(id:number): void{}
   public findByEmail(email:string): void{}
   public findByLoginOrEmail(email:string, login: string): void{}

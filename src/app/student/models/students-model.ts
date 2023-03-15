@@ -14,7 +14,7 @@ export class StudentsModel {
      */
 
     get id() {
-      return this._id===undefined ? 0 : this._id
+      return this._id === undefined ? 0 : this._id
     }
     
     set id(val: number) {
@@ -30,7 +30,7 @@ export class StudentsModel {
     }
     
     get firstName() {
-      return this._firstName===undefined?'': this._firstName
+      return this._firstName === undefined ? '' : this._firstName
     }
     
     set firstName(val: string) {
