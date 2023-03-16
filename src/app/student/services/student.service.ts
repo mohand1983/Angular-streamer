@@ -26,6 +26,7 @@ export class StudentService {
       this.endpoint
     )
   }
+  
   public findSimpleStudents(): Observable<IStudent[]>{
     return this._httpClient.get<IStudent[]>(
       this.endpoint

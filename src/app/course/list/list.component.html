@@ -1,0 +1,8 @@
+<legend>Course List</legend>
+<div *ngFor="let c of courses" >
+  <button class="accordion">{{c.title}}{{count}}Items </button>
+  <div class="panel">
+    
+  </div>
+  <p *ngFor="let m of c.modules">{{m.name}}</p>
+</div>

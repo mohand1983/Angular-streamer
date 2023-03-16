@@ -24,7 +24,11 @@ export class AppRoutingModule {
       path:'student/list',
       component:ListComponent
     },
-
+    {
+      path: 'course',    
+      loadChildren: () => import('./course/course.module')
+      .then((m) => m.CourseModule)
+    },
     {
       path: '**',
       redirectTo: 'dashboard',

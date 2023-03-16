@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TileComponent } from './dashboard/components/tile/tile.component';
 import { StudentModule } from './student/student.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,7 @@ import { StudentModule } from './student/student.module';
     BrowserModule,
     AppRoutingModule,
     StudentModule,
-    AppRoutingModule
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
