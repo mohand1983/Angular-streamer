@@ -9,8 +9,9 @@
             <tr><h1>Students </h1></tr>
             <tr>
                 <th><input type="checkbox" ></th>
-                <th>Initials</th>
+                
                 <th>ID</th>
+                <th>Initials</th>
                 <th>Last Name</th>
                 <th>First name</th>
                 <th>email</th>
@@ -22,7 +23,7 @@
                 <td><input type="checkbox"></td>
 
                 <td>{{s.id}}</td>
-                <td>{{s | initials}}</td>
+                <td><span class="bubble">{{s | initials}}</span></td>
                 <td>{{s.lastName | uppercase}}</td>
                 <td>{{s.firstName}}</td>
                 <td>{{s.email}}</td>
