@@ -3,20 +3,22 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { UiModule } from '../ui/ui.module';
 
 
 
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule,
+    CommonModule
    
   ],
   exports:[
     CommonModule,
     HttpClientModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    UiModule
   ]
 })
 export class SharedModule { }
