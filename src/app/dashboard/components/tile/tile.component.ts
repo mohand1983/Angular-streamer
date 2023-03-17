@@ -16,8 +16,8 @@ export class TileComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  ///public onClick(object:any):void{
-    //this. _router.navigate(object.action);
-  //}
+  public onClick(object:any):void{
+    this. _router.navigate(object.action);
+  }
 
 }

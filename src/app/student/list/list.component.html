@@ -1,20 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
+    
     <a href="" routerLink="/dashboard">Retour </a>
     <!--<a [routerLink]="['/','dashboard']">Retour </a>-->
     <a href="#" >Tri ascendant </a>
     <a href="#" >Tri descendant </a>
     <table class="table">
         <thead>
+            <tr><h1>Students </h1></tr>
             <tr>
                 <th><input type="checkbox" ></th>
                 <th>ID</th>
@@ -28,14 +20,9 @@
             <tr *ngFor="let s of students">
                 <td><input type="checkbox"></td>
                 <td>{{s.id}}</td>
-                <td>{{s.lastName}}</td>
+                <td>{{s.lastName | uppercase}}</td>
                 <td>{{s.firstName}}</td>
                 <td>{{s.email}}</td>
                 
             </tr>
-        </tbody>
-    </table>
-
-</body>
-
-</html>
+   

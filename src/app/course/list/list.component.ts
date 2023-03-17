@@ -23,7 +23,7 @@ export class ListComponent implements OnInit {
         next: (data) => {
          //console.log(`Got ${data.length}`)
           this.courses = data;
-          const count=this.courses.length;
+          //const count=this.courses.length;
         },
         error: (err) => {
           this.errorMessage = err;
@@ -31,6 +31,19 @@ export class ListComponent implements OnInit {
       });
       
   }
+
+  /*
+  onCourseToggle(course: CourseType): void {
+    console.log(`Course was toggled ${course.isSelected ? 'close all but me' : 'close me'}`)
+    if (course.isSelected) {
+      this.courses.filter((inCourse: CourseType) => inCourse.isSelected).forEach((inCourse: CourseType) => {
+        if (course.id !== inCourse.id) {
+          inCourse.isSelected = false
+        }
+      })
+    }
+  }
+  */
 
 }
 

@@ -4,12 +4,14 @@ import { HttpClientModule} from  '@angular/common/http'
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
+import { InitialsPipe } from './pipes/initials.pipe';
 
 
 
 @NgModule({
   declarations: [
-    ListComponent
+    ListComponent,
+    InitialsPipe
   ],
   imports: [
     SharedModule,

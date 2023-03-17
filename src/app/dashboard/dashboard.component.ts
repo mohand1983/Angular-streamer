@@ -20,23 +20,23 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.tiles.push({
-      title:'Parameters',
-      summary:'Parameters management',
-      action:['dashboard']
+      title: 'Parameters',
+      summary: 'Parameters management',
+      action: ['dashboard']
     },
     {
-      title:'Students',
-      summary:'Add, Remove, View',
-      action:['/','student', 'list']
+      title: 'Students',
+      summary: 'Add, remove, view students',
+      action: ['/', 'student', 'list']
     },
     {
-      title:'Courses',
-      summary:'Parameters management',
-      action:['dashboard']
+      title: 'Courses',
+      summary: 'Manage courses and medias',
+      action: ['/', 'course', 'list']
     })
   }
   public onClick(object:any): void{
-   //console.log(`A button was clicked :${object.title}`)
+   //${object.title}
   
   }
 
