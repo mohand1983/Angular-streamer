@@ -9,7 +9,7 @@ import { MatToolbarModule } from '@angular/material/toolbar'
     CommonModule
   ],
   exports:[
-    MatToolbarModule
+    MatToolbarModule,
   ]
 })
 export class UiModule { }

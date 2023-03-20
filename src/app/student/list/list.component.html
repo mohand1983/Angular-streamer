@@ -1,30 +1,32 @@
+<a href="" routerLink="/dashboard">Retour </a>
+<!--<a [routerLink]="['/','dashboard']">Retour </a>-->
+<a href="#">Tri ascendant </a>
+<a href="#">Tri descendant </a>
+<table class="table">
+    <thead>
+        <tr>
+            <h1>Students </h1>
+        </tr>
+        <tr>
+            <th><input type="checkbox"></th>
+            <th>ID</th>
+            <th>Initials</th>
+            <th>Last Name</th>
+            <th>First name</th>
+            <th>email</th>
 
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let s of students">
+            <td><input type="checkbox"></td>
+            <td>{{s.id}}</td>
+            <td>{{s | initials}}</td>
+            <td>{{s.lastName | uppercase}}</td>
+            <td>{{s.firstName}}</td>
+            <td>{{s.email}}</td>
+
+        </tr>
+    </tbody>
     
-    <a href="" routerLink="/dashboard">Retour </a>
-    <!--<a [routerLink]="['/','dashboard']">Retour </a>-->
-    <a href="#" >Tri ascendant </a>
-    <a href="#" >Tri descendant </a>
-    <table class="table">
-        <thead>
-            <tr><h1>Students </h1></tr>
-            <tr>
-                <th><input type="checkbox" ></th>
-                <th>ID</th>
-                <th>Initials</th>
-                <th>Last Name</th>
-                <th>First name</th>
-                <th>email</th>
-               
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let s of students">
-                <td><input type="checkbox"></td>
-                <td>{{s.id}}</td>
-                <td>{{s | initials}}</td>
-                <td>{{s.lastName | uppercase}}</td>
-                <td>{{s.firstName}}</td>
-                <td>{{s.email}}</td>
-                
-            </tr>
-   
+      
