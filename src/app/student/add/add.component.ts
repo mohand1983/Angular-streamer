@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add',
@@ -6,10 +7,52 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add.component.scss']
 })
 export class AddComponent implements OnInit {
+  public form: FormGroup=new FormGroup({})
 
-  constructor() { }
+  constructor(
+    private _formBuilder:FormBuilder
+  ) { }
 
   ngOnInit(): void {
+    this.form=this._formBuilder.group({
+      lastName:[
+        '',//Default value
+        [
+          Validators.required
+        ]// Validators function to add to this field
+      ],
+      email:[
+        '',
+        [
+          Validators.required,
+          Validators.pattern(/[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)
+        ]
+      ],
+      phoneNumber:[
+        '',
+        [
+
+        ]
+      ],
+      login:[
+        '',
+        [
+          Validators.required
+        ]
+      ],
+      password:[
+        '',
+        [
+          Validators.required
+        ]
+      ]
+    })
+  }
+  public get c():{[key:string]:AbstractControl}{
+    return this.form.controls
+  }
+  public onSubmit(): void{
+    console.log(`Form was submitted`)
   }
 
 }
