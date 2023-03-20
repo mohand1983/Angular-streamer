@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AddComponent } from './student/add/add.component';
 import { ListComponent } from './student/list/list.component';
 
 const routes: Routes = [];
@@ -23,6 +24,10 @@ export class AppRoutingModule {
     {
       path:'student/list',
       component:ListComponent
+    },
+    {
+      path: 'student/add', 
+      component: AddComponent
     },
     {
       path: 'course',    
