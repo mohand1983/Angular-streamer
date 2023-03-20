@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { StudentService } from '../services/student.service';
 
 @Component({
   selector: 'app-add',
@@ -10,7 +11,8 @@ export class AddComponent implements OnInit {
   public form: FormGroup=new FormGroup({})
 
   constructor(
-    private _formBuilder:FormBuilder
+    private _formBuilder:FormBuilder,
+    private _service:StudentService
   ) { }
 
   ngOnInit(): void {
@@ -52,7 +54,7 @@ export class AddComponent implements OnInit {
     return this.form.controls
   }
   public onSubmit(): void{
-    console.log(`Form was submitted`)
+    this._service.add(this.form.value)
   }
 
 }
