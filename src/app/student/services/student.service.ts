@@ -51,7 +51,17 @@ export class StudentService {
   public findByEmail(email:string): void{}
   public findByLoginOrEmail(email:string, login: string): void{}
 
-  public add(student: IStudent): void {
+
+  public add(student: IStudent): Observable<any> {
+    return this._httpClient.post<IStudent>(
+      this.endpoint,
+      student
+    ).pipe(
+      take(1)
+    )
+  }
+
+ /* public add(student: IStudent): void {
     this._httpClient.post<IStudent>(
       this.endpoint,
       student
@@ -65,5 +75,5 @@ export class StudentService {
         console.log(`Something went wrong : ${JSON.stringify(error)}`)
       }
     })
-  }
+  }*/
 }

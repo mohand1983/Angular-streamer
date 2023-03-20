@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+import { take } from 'rxjs';
+import { IStudent } from '../interfaces/i-student';
 import { StudentService } from '../services/student.service';
 
 @Component({
@@ -8,59 +12,74 @@ import { StudentService } from '../services/student.service';
   styleUrls: ['./add.component.scss']
 })
 export class AddComponent implements OnInit {
-  public form: FormGroup=new FormGroup({})
+  public form: FormGroup = new FormGroup({})
 
   constructor(
-    private _formBuilder:FormBuilder,
-    private _service:StudentService
+    private _formBuilder: FormBuilder,
+    private _service: StudentService,
+    private _snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
-    this.form=this._formBuilder.group({
-      lastName:[
+    this.form = this._formBuilder.group({
+      lastName: [
         '',//Default value
         [
           Validators.required
         ]// Validators function to add to this field
       ],
-      firstName:[
+      firstName: [
         '',//Default value
         [
           Validators.required
         ]// Validators function to add to this field
       ],
-      email:[
+      email: [
         '',
         [
           Validators.required,
           Validators.pattern(/[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)
         ]
       ],
-      phoneNumber:[
+      phoneNumber: [
         '',
         [
 
         ]
       ],
-      login:[
+      login: [
         '',
         [
           Validators.required
         ]
       ],
-      password:[
+      password: [
         '',
         [
-          Validators.required
+          Validators.required,
+          Validators.minLength(8),
+          Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/)
+
         ]
       ]
     })
   }
-  public get c():{[key:string]:AbstractControl}{
+  public get c(): { [key: string]: AbstractControl } {
     return this.form.controls
   }
-  public onSubmit(): void{
+
+  public onSubmit(): void {
     this._service.add(this.form.value)
+      .subscribe({
+        next: (response: IStudent) => {
+          this._snackBar.open('Student was created', 'ok')
+        },
+        error: (error: any) => {
+          this._snackBar.open('Student was not created', 'not ok')
+
+        }
+      })
   }
 
 }
+

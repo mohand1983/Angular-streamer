@@ -59,12 +59,10 @@
                         </mat-form-field>
                     </div>
                     <div class="col xs12">
-                        <mat-form-field hintLabel="Minimum 8 Characters" class="">
                             <input type="password" matInput placeholder="Student password..." formControlName="password">
                             <mat-error *ngIf="c['password'].errors && c['password'].touched">
                                 password is required
                             </mat-error>
-                        </mat-form-field>
                     </div>
                 </div>
             </fieldset>
