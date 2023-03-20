@@ -12,6 +12,14 @@
                             </mat-error>
                         </mat-form-field>
                     </div>
+                    <div class="col xs12">
+                        <mat-form-field>
+                            <input matInput placeholder="Student first name..." formControlName="firstName">
+                            <mat-error *ngIf="c['firstName'].errors && c['firstName'].touched">
+                                Lastname is required
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
 
                     <div class="row">
                         <div class="col xs12">

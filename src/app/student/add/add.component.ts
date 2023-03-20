@@ -23,6 +23,12 @@ export class AddComponent implements OnInit {
           Validators.required
         ]// Validators function to add to this field
       ],
+      firstName:[
+        '',//Default value
+        [
+          Validators.required
+        ]// Validators function to add to this field
+      ],
       email:[
         '',
         [
