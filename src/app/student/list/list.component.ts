@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { take } from 'rxjs/operators';
 import { IStudent } from '../interfaces/i-student';
 import { StudentService } from '../services/student.service';
@@ -11,9 +12,11 @@ import { StudentService } from '../services/student.service';
 export class ListComponent implements OnInit {
   public students: Array<any>=[]
   errorMessage!: string;
+ 
 
   constructor(
-    private _studentService: StudentService
+    private _studentService: StudentService,
+
   ) { }
 
   ngOnInit(): void {
@@ -52,7 +55,12 @@ export class ListComponent implements OnInit {
     this.byLastNameSortOrder = this.byLastNameSortOrder * -1
     this.sortDefault = 'lastName'
   }*/
-  
+  /*public updateStduent(id: any){
+    let currentStduent=this.getAllStudents.find((s)=>{
+      return s.id===id});
 
+  }*/
 
+ 
 }
+  

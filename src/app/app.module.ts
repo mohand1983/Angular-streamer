@@ -8,11 +8,12 @@ import { StudentModule } from './student/student.module';
 import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    TileComponent
+    TileComponent,
   ],
   imports: [
     BrowserModule,
