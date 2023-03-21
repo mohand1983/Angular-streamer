@@ -1,8 +1,9 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AddComponent } from './student/add/add.component';
 import { ListComponent } from './student/list/list.component';
+import { UpdateComponent } from './student/update/update.component';
 
 const routes: Routes = [];
 
@@ -28,6 +29,10 @@ export class AppRoutingModule {
     {
       path: 'student/add', 
       component: AddComponent
+    },
+    {
+      path: 'student/:id/update',// :id => sera remplacé par l'id student à l'excution
+      component:UpdateComponent
     },
     {
       path: 'course',    
