@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { StudentService } from '../services/student.service';
 
 @Component({
   selector: 'app-update',
@@ -9,7 +10,8 @@ import { ActivatedRoute } from '@angular/router';
 export class UpdateComponent implements OnInit {
 
   constructor(
-    private _route:ActivatedRoute
+    private _route:ActivatedRoute,
+    private _studentService: StudentService
   ) { }
 
   ngOnInit(): void {

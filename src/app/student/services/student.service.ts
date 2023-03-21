@@ -47,7 +47,14 @@ export class StudentService {
     )
   }
   
-  public findOne(id:number): void{}
+  public findOne(id:number):Observable<StudentsModel>{
+    return this._httpClient.get<any>(
+      this.endpoint + '/' + id
+    )
+  }
+
+
+
   public findByEmail(email:string): void{}
   public findByLoginOrEmail(email:string, login: string): void{}
 
