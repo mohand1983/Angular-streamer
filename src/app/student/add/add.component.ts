@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { take } from 'rxjs';
 import { IStudent } from '../interfaces/i-student';
+import { StudentsModel } from '../models/students-model';
 import { StudentService } from '../services/student.service';
 
 @Component({
@@ -13,6 +14,7 @@ import { StudentService } from '../services/student.service';
 })
 export class AddComponent implements OnInit {
   public form: FormGroup = new FormGroup({})
+  public student: StudentsModel=new StudentsModel()
 
   constructor(
     private _formBuilder: FormBuilder,

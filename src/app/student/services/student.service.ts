@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable, take } from 'rxjs';
+import { map, Observable, take, tap } from 'rxjs';
 import { IStudent } from '../interfaces/i-student';
 import { StudentsModel } from '../models/students-model';
 import { environment } from './../../../environments/environment'
@@ -47,9 +47,17 @@ export class StudentService {
     )
   }
   
-  public findOne(id:number):Observable<StudentsModel>{
+  //Find a student by our id 
+  public findOne(id: number): Observable<StudentsModel> {
     return this._httpClient.get<any>(
       this.endpoint + '/' + id
+    )
+    .pipe(
+      tap((response: any) => {
+        console.log(JSON.stringify(response))
+      }),
+      take(1),
+      map((student: any) => student)
     )
   }
 
@@ -68,19 +76,16 @@ export class StudentService {
     )
   }
 
- /* public add(student: IStudent): void {
-    this._httpClient.post<IStudent>(
+
+
+  public update(student: StudentsModel):Observable<HttpResponse<any>>{
+    return this._httpClient.put<StudentsModel>(
       this.endpoint,
-      student
-    ).pipe(
-      take(1)
-    ).subscribe({
-      next: (response: IStudent) => {
-        console.log(JSON.stringify(response))
-      },
-      error: (error: any) => {
-        console.log(`Something went wrong : ${JSON.stringify(error)}`)
+      student,
+      {
+        observe: 'response'
       }
-    })
-  }*/
+    )
+
+  }
 }
