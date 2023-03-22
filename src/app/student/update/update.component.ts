@@ -4,6 +4,7 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 import { ActivatedRoute } from '@angular/router';
 import { StudentsModel } from '../models/students-model';
 import { StudentService } from '../services/student.service';
+import { SutudentFormService } from '../services/student-form.service';
 
 @Component({
   selector: 'app-update',
@@ -15,8 +16,9 @@ export class UpdateComponent implements OnInit {
   public student: StudentsModel | null = null
 
   constructor(
+    private _formService:SutudentFormService,
+    private _service: StudentService,
     private _route: ActivatedRoute,
-    private _formBuilder: FormBuilder,
     private _studentService: StudentService
   ) { }
 
@@ -27,7 +29,8 @@ export class UpdateComponent implements OnInit {
       .subscribe({
         next: (student: StudentsModel) => {
           this.student = student
-          this._buildForm()
+          this._formService.buildForm(this.student)
+          this.form=this._formService.form
           //console.log(JSON.stringify(student))
         },
         error: (error: any) => {
@@ -36,56 +39,8 @@ export class UpdateComponent implements OnInit {
       })
   }
   public get c(): { [key: string]: AbstractControl } {
-    return this.form.controls
+    return this._formService.c
   }
-
-
-  private _buildForm(): void {
-    this.form = this._formBuilder.group({
-      lastName: [
-        this.student!.lastName,//Default value
-        [
-          Validators.required
-        ]// Validators function to add to this field
-      ],
-      firstName: [
-        this.student!.firstName,//Default value
-        [
-          Validators.required
-        ]// Validators function to add to this field
-      ],
-      email: [
-        this.student!.email,
-        [
-          Validators.required,
-          Validators.pattern(/[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)
-        ]
-      ],
-      phoneNumber: [
-        this.student!.phoneNumber,
-        [
-
-        ]
-      ],
-      login: [
-        this.student!.login,
-        [
-          Validators.required
-        ]
-      ],
-      password: [
-        this.student!.password,
-        [
-          Validators.required,
-          Validators.minLength(8),
-          Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/)
-
-        ]
-      ]
-    })
-  }
-
-
 
 
   onSubmit(): void {

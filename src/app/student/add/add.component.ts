@@ -5,69 +5,33 @@ import { Router } from '@angular/router';
 import { take } from 'rxjs';
 import { IStudent } from '../interfaces/i-student';
 import { StudentsModel } from '../models/students-model';
+import { SutudentFormService } from '../services/student-form.service';
 import { StudentService } from '../services/student.service';
+
 
 @Component({
   selector: 'app-add',
   templateUrl: './add.component.html',
   styleUrls: ['./add.component.scss']
 })
+
+
 export class AddComponent implements OnInit {
   public form: FormGroup = new FormGroup({})
-  public student: StudentsModel=new StudentsModel()
+  public student: StudentsModel = new StudentsModel()
 
   constructor(
-    private _formBuilder: FormBuilder,
+    private _formService: SutudentFormService,
     private _service: StudentService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private _router: Router
   ) { }
 
   ngOnInit(): void {
-    this.form = this._formBuilder.group({
-      lastName: [
-        '',//Default value
-        [
-          Validators.required
-        ]// Validators function to add to this field
-      ],
-      firstName: [
-        '',//Default value
-        [
-          Validators.required
-        ]// Validators function to add to this field
-      ],
-      email: [
-        '',
-        [
-          Validators.required,
-          Validators.pattern(/[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)
-        ]
-      ],
-      phoneNumber: [
-        '',
-        [
-
-        ]
-      ],
-      login: [
-        '',
-        [
-          Validators.required
-        ]
-      ],
-      password: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(8),
-          Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/)
-
-        ]
-      ]
-    })
+    this.form = this._formService.form
   }
   public get c(): { [key: string]: AbstractControl } {
-    return this.form.controls
+    return this._formService.c
   }
 
   public onSubmit(): void {
