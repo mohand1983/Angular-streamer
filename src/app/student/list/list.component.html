@@ -5,7 +5,7 @@
 <table class="table">
     <thead>
         <tr>
-            <h1>Students </h1>
+            <h1>Students <span (click)="openForm()">Add</span></h1>
         </tr>
         <tr>
             <th><input type="checkbox"></th>
@@ -25,7 +25,7 @@
             <td>{{s.lastName | uppercase}}</td>
             <td>{{s.firstName}}</td>
             <td>{{s.email}}</td>
-            <td><button mat-raised-button color="primary" [routerLink]="['/', 'student', s.id, 'update']">Update</button></td>
+            <td><button mat-raised-button color="primary"  (click)="openForm(s)">Update</button></td>
 
         </tr>
     </tbody>
