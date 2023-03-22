@@ -11,6 +11,9 @@ import { SutudentFormService } from '../../services/student-form.service';
   styleUrls: ['./student-form.component.scss']
 })
 export class StudentFormComponent implements OnInit {
+
+
+  public okButtonLabel: string= 'Add'
   public form:FormGroup=new FormGroup({})
   private _student: StudentsModel
   
@@ -21,6 +24,9 @@ export class StudentFormComponent implements OnInit {
   ) {
 
     this._student = this.data.student
+    if (this._student.id){
+      this.okButtonLabel='update'
+    }
   }
 
   ngOnInit(): void {
@@ -44,6 +50,10 @@ export class StudentFormComponent implements OnInit {
    * @returns Event triggerd if user click on the yes button
    */
   public onSubmit(): void{
+    this._sutudentFormService.onSubmit()
+    .subscribe((student :StudentsModel)=>{
+      this.dialogRef.close(student)
+    })
     return this.dialogRef.close(this._student)
   }
 

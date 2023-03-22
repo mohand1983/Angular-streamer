@@ -6,4 +6,5 @@ export interface IStudent {
     phoneNumber?:string
     login?:string
     password?:string
+    isSelected: boolean
 }

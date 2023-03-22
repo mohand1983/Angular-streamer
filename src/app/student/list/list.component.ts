@@ -26,14 +26,7 @@ export class ListComponent implements OnInit {
     this.getAllStudents()
   }
   getAllStudents() {
-    /*this._studentService.findAll()
-      .pipe(
-        take(1)
-      ).subscribe((students: IStudent[]) => {
-        //console.log(`Got ${students.length} students`)
-        //return `${students}`;
-        this.students=students;
-      })*/
+
     this._studentService.findSimpleStudentsDto().subscribe({
       next: (data) => {
         //console.log(`Got ${data.length} students`)
@@ -66,38 +59,42 @@ export class ListComponent implements OnInit {
   private _openDialog(student: StudentsModel): void{
     const dialogRef = this._matDialog.open(StudentFormComponent, {
       width: '500px',
-      height: '700px',
+      height: '500px',
       hasBackdrop: false,
       data: {student}
     })
 
     dialogRef.afterClosed().subscribe((result: any) => {
       if (result) {
-        console.log(`Got a result, do a job`)
+        console.log(`Got a result, do a job ${JSON.stringify(result)}`)
+        //Convert StudentModel to simpleStudent (or IStudent)
+        const iStudent:IStudent={
+          id:result.id,
+          lastName:result.lastName,
+          firstName:result.firstName,
+          email:result.email,
+          isSelected:false
+
+        }
+        //if student already axists in students : replace it
+        const index: number=this.students.findIndex((student: IStudent)=> student.id===iStudent.id)
+        if(index>-1){
+          this.students.splice(
+            index,
+            1,
+            iStudent
+          )
+        } else{
+          this.students.push(iStudent)
+        }
+        // else add it (and re sort table)
+        this.students.sort((s1: IStudent, s2: IStudent)=>s1.id!-s2.id!)
       } else {
         console.log(`No result, lunch time`)
       }
     })
 
   }
-
-  /*public byId(): void {
-    this.students.sort((s1: IStudent, s2: IStudent) => (s1.id! - s2.id!) * this.byIdSortOrder)
-    this.byIdSortOrder = this.byIdSortOrder * -1
-    this.sortDefault = 'id'
-  } 
-
-  public byLastname(): void {
-    this.students.sort((s1: IStudent, s2: IStudent) => s1.lastName.localeCompare(s2.lastName) * this.byLastNameSortOrder)
-    this.byLastNameSortOrder = this.byLastNameSortOrder * -1
-    this.sortDefault = 'lastName'
-  }*/
-  /*public updateStduent(id: any){
-    let currentStduent=this.getAllStudents.find((s)=>{
-      return s.id===id});
-
-  }*/
-
 
 }
 

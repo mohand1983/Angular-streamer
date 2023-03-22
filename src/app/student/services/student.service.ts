@@ -34,7 +34,7 @@ export class StudentService {
       take(1),
       map((students: IStudent[]) => {
         return students.map((s: IStudent) => {
-          return {id: s.id, lastName: s.lastName, firstName: s.firstName, email: s.email}
+          return {id: s.id, lastName: s.lastName, firstName: s.firstName, email: s.email, isSelected:false}
         })
       })
     )

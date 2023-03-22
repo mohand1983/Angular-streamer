@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { map, Observable } from 'rxjs';
+import { IStudent } from '../interfaces/i-student';
 import { StudentsModel } from '../models/students-model';
+import { StudentService } from './student.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +14,8 @@ export class SutudentFormService {
   private _student:StudentsModel=new StudentsModel()
 
   constructor(
-    private _formBuilder: FormBuilder
+    private _formBuilder: FormBuilder,
+    private _studentService: StudentService
   ) { 
     this._buildForm()
   }
@@ -26,6 +30,8 @@ export class SutudentFormService {
   get form(): FormGroup{
     return this._form
   }
+
+ 
   /**
    * studentFormService.getForm()
    * @returns 
@@ -39,6 +45,34 @@ export class SutudentFormService {
   }
 
 
+    //object.assign(this._student, this._form.value)
+ 
+  public onSubmit(): Observable<any> {
+
+    if (this._student.id) {
+      this._student.lastName = this.c['lastName'].value
+      this._student.firstName = this.c['firstName'].value
+      this._student.email = this.c['email'].value
+      this._student.phoneNumber = this.c['phoneNumber'].value
+      this._student.login = this.c['login'].value
+      this._student.password = this.c['password'].value
+      return this._studentService.update(this._student)
+      .pipe(
+        map(_ => this._student)
+      )
+    }
+
+    const student: IStudent = {
+      lastName: this.c['lastName'].value,
+      firstName: this.c['firstName'].value,
+      email: this.c['email'].value,
+      phoneNumber: this.c['phoneNumber'].value,
+      login: this.c['login'].value,
+      password: this.c['password'].value,
+      isSelected: false
+    }
+    return this._studentService.add(student)
+  }
   
   private _buildForm():void{
     this._form=this._formBuilder.group({
